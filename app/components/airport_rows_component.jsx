@@ -2,24 +2,24 @@ const AirportRow = require('./airport_row_component.jsx');
 const Moment = require('moment');
 
 class AirportResultsComponent extends React.Component{
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render(){
-    return(
-      <div style={css(styles.container)} >
-            <table align="center" style={css(styles.table)} >
-                <tr>
-                    <td style={css(styles.header)} >Day         </td>
-                    <td style={css(styles.header)} >Cooling Used</td>
-                    <td style={css(styles.header)} >Heating Used</td>
-                </tr>
-                {getRows(this.props.rows)}
-            </table>
-      </div>
-    )
-  }
+    render(){
+        return(
+            <div style={css(styles.container)} >
+                <table align="center" style={css(styles.table)} >
+                    <tr>
+                        <td style={css(styles.header)} >Day         </td>
+                        <td style={css(styles.header)} >Cooling Used</td>
+                        <td style={css(styles.header)} >Heating Used</td>
+                    </tr>
+                    {getRows(this.props.rows)}
+                </table>
+            </div>
+        )
+    }
 };
 
 function getRows(rows) {
