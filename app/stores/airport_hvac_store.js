@@ -1,7 +1,7 @@
-var Dispatcher = require('../dispatchers/airport_hvac_dispatcher.js');
-var EventEmitter = require('events').EventEmitter;
-var Constants = require('../constants/airport_hvac_constants.js');
-var assign = require('object-assign');
+const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.js');
+const EventEmitter = require('events').EventEmitter;
+const Constants = require('../constants/airport_hvac_constants.jsx');
+const assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
