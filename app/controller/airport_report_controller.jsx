@@ -47,7 +47,6 @@ class AnalysisComponent extends React.Component{
                 </Jumbotron>
 
                 <Row style={css(styles.body)}>
-                    <hr />
                     <AirportRows rows={this.state.data}/>
                 </Row>
             </div>
