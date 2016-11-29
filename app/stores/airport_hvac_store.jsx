@@ -8,38 +8,35 @@ var CHANGE_EVENT = 'change';
 var Data = [];
 
 //Listeners
-var AirportHvacStore = assign({}, EventEmitter.prototype, {  
-  emitChange: function() {
-      this.emit(CHANGE_EVENT);
-  },
-  addChangeListener: function(callback) {
-      this.on(CHANGE_EVENT, callback);
-  },
-  removeChangeListener: function(callback) {
-      this.removeListener(CHANGE_EVENT, callback);
-  },
+var AirportHvacStore = assign({}, EventEmitter.prototype, {
+    emitChange: function() {
+        this.emit(CHANGE_EVENT);
+    },
+    addChangeListener: function(callback) {
+        this.on(CHANGE_EVENT, callback);
+    },
+    removeChangeListener: function(callback) {
+        this.removeListener(CHANGE_EVENT, callback);
+    },
 
-  // Use Data in component
-  getData: function() {
-      return Data;
-  }
+    // Use Data in component
+    getData: function() {
+        return Data;
+    }
 });
 
 //Process Actions
 AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
-  console.log('im at the store switch and the type is '+ payload.type);
     switch(payload.type){
-    case Constants.GET_AIRPORT_HVAC_DATA:
-      getData(payload.data);
-      break;
-  }
+        case Constants.GET_AIRPORT_HVAC_DATA:
+            getData(payload.data);
+            break;
+    }
 
 });
 
 //Define Custom Actions
 function getData(data){
-
-    console.log("calling api with: " + data);
     const startTime = data.startTime;
     const endTime = data.endTime;
 
@@ -49,10 +46,10 @@ function getData(data){
         dataType: 'json'
     });
 
-  promise.then( function(response){
-      Data = response;
-     AirportHvacStore.emitChange();
- });
+    promise.then( function(response){
+        Data = response;
+        AirportHvacStore.emitChange();
+    });
 }
 
 module.exports = AirportHvacStore;
