@@ -1,11 +1,11 @@
 const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.jsx');
 const Constants = require('../constants/airport_hvac_constants.jsx');
 
-var AirportHvacActions = {
+const AirportHvacActions = {
 
     getUpdatedAirportDate(startTime, endTime) {
         Dispatcher.handleViewAction({
-            type:Constants.GET,
+            type:Constants.GET_AIRPORT_HVAC_DATA,
             data: {startTime, endTime}
         });
     },

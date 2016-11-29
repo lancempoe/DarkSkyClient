@@ -29,7 +29,7 @@ var AirportHvacStore = assign({}, EventEmitter.prototype, {
 AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
   console.log('im at the store switch and the type is '+ payload.type);
     switch(payload.type){
-    case Constants.GET:
+    case Constants.GET_AIRPORT_HVAC_DATA:
       getData(payload.data);
       break;
   }

@@ -1,10 +1,8 @@
-var Dispatcher = require('flux').Dispatcher;
-var assign = require('object-assign');
+const Dispatcher = require('flux').Dispatcher;
+const assign = require('object-assign');
 
-var AirportHvacDispatcher = assign(new Dispatcher(), {
+const AirportHvacDispatcher = assign(new Dispatcher(), {
   handleViewAction: function(payload) {
-    console.log("i'm in the dispaceher with type of " + payload.type);
-
     this.dispatch(payload)
   }
 });

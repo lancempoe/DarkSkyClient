@@ -1,7 +1,5 @@
-//Specific Constants for AirportHvacStore
-var AirportHvacConstants = {
-  GET: "GET",
-  // SET: "SET"
-}
+const AirportHvacConstants = {
+  GET_AIRPORT_HVAC_DATA: "GET_AIRPORT_HVAC_DATA"
+};
 
 module.exports = AirportHvacConstants;
