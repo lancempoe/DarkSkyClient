@@ -1,14 +1,16 @@
+/* global $ */
+
 const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.jsx');
 const EventEmitter = require('events').EventEmitter;
 const Constants = require('../constants/airport_hvac_constants.jsx');
 const assign = require('object-assign');
 
-var CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change';
 
-var Data = [];
+let Data = [];
 
 //Listeners
-var AirportHvacStore = assign({}, EventEmitter.prototype, {
+const AirportHvacStore = assign({}, EventEmitter.prototype, {
     emitChange: function() {
         this.emit(CHANGE_EVENT);
     },
@@ -26,7 +28,7 @@ var AirportHvacStore = assign({}, EventEmitter.prototype, {
 });
 
 //Process Actions
-AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
+AirportHvacStore.dispatchToken = Dispatcher.register((payload) => {
     switch(payload.type){
         case Constants.GET_AIRPORT_HVAC_DATA:
             getData(payload.data);
@@ -40,13 +42,13 @@ function getData(data){
     const startTime = data.startTime;
     const endTime = data.endTime;
 
-    var promise = $.ajax({
+    const promise = $.ajax({
         method: "POST",
         url: `http://localhost:8080/api/weather/airport?start_date=${startTime}&end_date=${endTime}`,
         dataType: 'json'
     });
 
-    promise.then( function(response){
+    promise.then( (response) => {
         Data = response;
         AirportHvacStore.emitChange();
     });

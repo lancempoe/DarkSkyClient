@@ -3,7 +3,7 @@ const assign = require('object-assign');
 
 const AirportHvacDispatcher = assign(new Dispatcher(), {
   handleViewAction: function(payload) {
-    this.dispatch(payload)
+    this.dispatch(payload);
   }
 });
 

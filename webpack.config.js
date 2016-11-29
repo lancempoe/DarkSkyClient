@@ -8,10 +8,23 @@ module.exports = {
         publicPath: "localhost:9001"
     },
     module: {
-        loaders: [{
-            test: /\.js[x]*$/,
-            loaders: ["jsx-loader?harmony"],
-        }],
+        loaders: [
+            {
+                test: /\.js[x]*$/,
+                loaders: ["jsx-loader?harmony"],
+            }, {
+                test: /\.jsx$/, exclude: /node_modules/,
+                loader: "babel-loader"
+            },
+            {
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loader: "babel",
+                query:
+                {
+                    presets:['react']
+                }
+            }],
         preLoaders: [{
             test: /\.js[x]*$/,
             loaders: ["future-loader"],

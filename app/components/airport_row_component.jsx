@@ -1,3 +1,4 @@
+/* global React, css */
 
 class AirportRowComponent extends React.Component{
     constructor(props) {
@@ -13,9 +14,9 @@ class AirportRowComponent extends React.Component{
             </tr>
         );
     }
-};
+}
 
-var styles ={
+const styles ={
     row:{
         border: '1px solid black'
     }

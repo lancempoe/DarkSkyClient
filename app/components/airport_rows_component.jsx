@@ -1,5 +1,7 @@
-const AirportRow = require('./airport_row_component.jsx');
-const Moment = require('moment');
+/* global React, css */
+
+import AirportRow from './airport_row_component.jsx'; // eslint-disable-line no-unused-vars
+import Moment from 'moment';
 
 class AirportResultsComponent extends React.Component{
     constructor(props) {
@@ -18,12 +20,12 @@ class AirportResultsComponent extends React.Component{
                     {getRows(this.props.rows)}
                 </table>
             </div>
-        )
+        );
     }
-};
+}
 
 function getRows(rows) {
-    let airportRows = [];
+    const airportRows = [];
     rows.forEach(row => {
         airportRows.push(
             <AirportRow
@@ -43,7 +45,7 @@ AirportResultsComponent.propTypes = {
     rows: React.PropTypes.array
 };
 
-var styles = {
+const styles = {
     header: {
         width: "15%",
         fontWeight: 'bold'
@@ -53,7 +55,7 @@ var styles = {
         padding: '5px'
     },
     table: {
-        border: '1px solid red',
+        border: '1px solid black',
         margin: '0 auto',
         backgroundColor: 'white',
         color: 'black',

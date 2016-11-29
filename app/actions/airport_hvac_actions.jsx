@@ -1,5 +1,5 @@
-const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.jsx');
-const Constants = require('../constants/airport_hvac_constants.jsx');
+import Dispatcher from '../dispatchers/airport_hvac_dispatcher.jsx';
+import Constants from '../constants/airport_hvac_constants.jsx';
 
 const AirportHvacActions = {
 
