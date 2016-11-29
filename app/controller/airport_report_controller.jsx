@@ -1,7 +1,6 @@
 const Store = require('../stores/airport_hvac_store.jsx');
 const actions = require('../actions/airport_hvac_actions.jsx');
 const AirportRows = require('./../components/airport_rows_component.jsx');
-const Moment = require('moment');
 
 class AnalysisComponent extends React.Component{
 
@@ -13,11 +12,9 @@ class AnalysisComponent extends React.Component{
       this.state = {data: []};
   }
   componentWillMount() {
-      //Event Listener    
      Store.addChangeListener(this.onChange.bind(this));
   }
 
-  //Callback On Change
   onChange() {
       this.setState({
           data: Store.getData()
@@ -39,15 +36,17 @@ class AnalysisComponent extends React.Component{
   render(){
     return(
         <div style={css(styles.center)}>
-            <Jumbotron style={styles.jumbo}>
-                <Row style={styles.row}>
-                  <h1 className="text-center">Airport HVAC Analysis Tool</h1>
+            <Jumbotron style={styles.jumbo} >
+                <Row >
+                  <h1 className="text-center">Port of Portland HVAC Analyzer</h1>
+                </Row>
+                <Row>
+                    <button style={css(styles.button)} onClick={this.onJuneButtonClick} className="text-center">Click for June results</button>
+                    <button style={css(styles.button)} onClick={this.onJulyButtonClick} className="text-center">Click for July results</button>
                 </Row>
             </Jumbotron>
 
             <Row style={css(styles.body)}>
-                <button style={css(styles.button)} onClick={this.onJuneButtonClick} className="text-center">Click for June results</button>
-                <button style={css(styles.button)} onClick={this.onJulyButtonClick} className="text-center">Click for July results</button>
                 <hr />
                 <AirportRows rows={this.state.data}/>
             </Row>
@@ -61,7 +60,8 @@ var styles ={
         color: '#1f352b',
         position: 'fixed',
         zIndex: '10',
-        width: '100%'
+        width: '100%',
+        height: '170px'
     },
     center:{
         textAlign: 'center',
@@ -70,24 +70,9 @@ var styles ={
     button: {
         color: '#555555'
     },
-    row:{
-        marginLeft: '0px',
-        marginRight: '0px'
-    },
     body:{
         paddingTop: '197px',
-    },
-    display:{
-        backgroundColor: '#a4a4a4',
-        color: '#1f352b',
-        paddingBottom:'30px'
-    },
-    code:{
-        backgroundColor: '#71907b',
-        marginRight:'5px',
-        marginLeft:'5px'
     }
-
-}
+};
 
 module.exports = AnalysisComponent;

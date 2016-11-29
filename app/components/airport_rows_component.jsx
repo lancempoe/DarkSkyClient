@@ -45,18 +45,19 @@ AirportResultsComponent.propTypes = {
 
 var styles = {
     header: {
-        width: "15%"
+        width: "15%",
+        fontWeight: 'bold'
     },
     container: {
         textAlign: 'center',
-        border: '1px solid green',
         padding: '5px'
     },
     table: {
         border: '1px solid red',
-        margin: '0 auto'
-    /* You can also uncomment this and remove the align="center" attribute
-     */
+        margin: '0 auto',
+        backgroundColor: 'white',
+        color: 'black',
+        paddingBottom:'30px'
     }
 };
 

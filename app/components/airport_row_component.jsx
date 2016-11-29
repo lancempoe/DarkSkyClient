@@ -9,7 +9,7 @@ class AirportRowComponent extends React.Component{
 
     render(){
         return (
-            <tr>
+            <tr style={css(styles.row)}>
                 <td>{this.props.day}</td>
                 <td>{this.props.coolingUsed}</td>
                 <td>{this.props.heatingUsed}</td>
@@ -20,8 +20,8 @@ class AirportRowComponent extends React.Component{
 
 //Inline CSS Styles(excludes hover)
 var styles ={
-    base:{
-
+    row:{
+        border: '1px solid black'
     }
 };
 
