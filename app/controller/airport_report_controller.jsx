@@ -1,6 +1,7 @@
 // var Constants = require('../constants/analysis_component.jsx_constants');
-// var Store = require('../stores/analysis_component.jsx_store');
+var Store = require('../stores/airport_hvac_store.js');
 // var Actions = require('../actions/analysis_component.jsx_actions');
+const actions = require('../actions/airport_hvac_actions.jsx');
 const AirportRows = require('./../components/airport_rows_component.jsx');
 
 class AnalysisComponent extends React.Component{
@@ -10,19 +11,24 @@ class AnalysisComponent extends React.Component{
     super(props);
     $('body').css('backgroundColor','#1f352b');
     $('body').css('color','white');
-    // this.state = {data: []};
+      this.state = {data: []};
   }
   componentWillMount() {
       //Event Listener    
-     //Store.addChangeListener(this.onChange);
+     Store.addChangeListener(this.onChange.bind(this));
   }
 
   //Callback On Change
   onChange() {
-   //this.setState({
-     //data: Store.getData()
-   //});
+      this.setState({
+          data: Store.getData()
+      });
   }
+
+  onUpdateCalendar() {
+        actions.getUpdatedAirportDate();
+  }
+
   render(){
     return(
             <div>
@@ -32,9 +38,9 @@ class AnalysisComponent extends React.Component{
                 </Row>
             </Jumbotron>
             <Row  style={css(styles.body,styles.row)}>
-                <h1 className="text-center">I will put my calendar selectors here</h1>
+                <h1 onClick={this.onUpdateCalendar} className="text-center">Click for updated data (replace with calendars soon)</h1>
                 <hr />
-                <AirportRows rows={sampleData}/>
+                <AirportRows rows={this.state.data}/>
             </Row>
       </div>
     )

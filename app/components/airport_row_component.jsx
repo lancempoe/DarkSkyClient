@@ -6,17 +6,7 @@ class AirportRowComponent extends React.Component{
     constructor(props) {
         super(props);
     }
-    componentWillMount() {
-        //Event Listener
-        //Store.addChangeListener(this.onChange);
-    }
 
-    //Callback On Change
-    onChange() {
-        //this.setState({
-        //data: Store.getData()
-        //});
-    }
     render(){
         return (
             <tr>
@@ -27,6 +17,7 @@ class AirportRowComponent extends React.Component{
         );
     }
 };
+
 //Inline CSS Styles(excludes hover)
 var styles ={
     base:{

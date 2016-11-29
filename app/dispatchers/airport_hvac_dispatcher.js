@@ -3,9 +3,9 @@ var assign = require('object-assign');
 
 var AirportHvacDispatcher = assign(new Dispatcher(), {
   handleViewAction: function(payload) {
-    this.dispatch({
-      payload: payload
-    })
+    console.log("i'm in the dispaceher with type of " + payload.type);
+
+    this.dispatch(payload)
   }
 });
 

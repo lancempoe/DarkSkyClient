@@ -1,6 +1,6 @@
 //Specific Constants for AirportHvacStore
 var AirportHvacConstants = {
-  // GET: "GET",
+  GET: "GET",
   // SET: "SET"
 }
 

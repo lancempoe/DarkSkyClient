@@ -2,7 +2,7 @@
 // var Store = require('../stores/airport_results_component_store');
 // var Actions = require('../actions/airport_results_component_actions');
 const AirportRow = require('./airport_row_component.jsx');
-const moment = require('moment');
+const Moment = require('moment');
 
 class AirportResultsComponent extends React.Component{
   constructor(props) {
@@ -42,7 +42,7 @@ function getRows(rows) {
     rows.forEach(row => {
         airportRows.push(
             <AirportRow
-                day={moment.unix(row.day).format("MM/DD/YYYY")}
+                day={Moment.unix(row.day).format("MM/DD/YYYY")}
                 coolingUsed={row.coolingUsed ? "Yes":"No"}
                 heatingUsed={row.heatingUsed ? "Yes":"No"}/>
         );

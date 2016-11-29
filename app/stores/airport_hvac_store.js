@@ -1,11 +1,11 @@
-var Dispatcher = require('../dispatchers/airport_hvac_dispatcher');
+var Dispatcher = require('../dispatchers/airport_hvac_dispatcher.js');
 var EventEmitter = require('events').EventEmitter;
-var Constants = require('../constants/airport_hvac_constants');
+var Constants = require('../constants/airport_hvac_constants.js');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-//var Data = [];
+var Data = [];
 
 //Listeners
 var AirportHvacStore = assign({}, EventEmitter.prototype, {  
@@ -18,18 +18,20 @@ var AirportHvacStore = assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
       this.removeListener(CHANGE_EVENT, callback);
   },
+
   // Use Data in component
-  // getData: function() {
-  //     return Data;
-  // }
+  getData: function() {
+      return Data;
+  }
 });
 
 //Process Actions
 AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
-  switch(payload.type){
-    // case Constants.GET: 
-    //   getData();
-    //   break;
+  console.log('im at the store switch and the type is '+ payload.type);
+    switch(payload.type){
+    case Constants.GET:
+      getData();
+      break;
     // case Constants.SET:
     //   setData();
     //   break;      
@@ -38,14 +40,23 @@ AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
 });
 
 //Define Custom Actions
-// function getData(){
-//   var promise = $.ajax("http://localhost:3000/data",{dataType: 'json'});
+function getData(){
 
-//   promise.then( function(response){
-//      Data = response.Data;   
-//      AirportHvacStore.emitChange();
-//  });
-// }
+    console.log("calling api");
+
+    var promise = $.ajax({
+        method: "POST",
+        url: "http://localhost:8080/api/weather/airport?start_date=1480155289&end_date=1480241689",
+        dataType: 'json'
+    });
+
+  promise.then( function(response){
+      console.log("Success: " + response);
+
+      Data = response;
+     AirportHvacStore.emitChange();
+ });
+}
 
 // function setData(){
 //   var Data ="DATA";
