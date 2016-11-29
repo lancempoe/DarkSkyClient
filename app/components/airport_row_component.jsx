@@ -1,6 +1,3 @@
-// var Constants = require('../constants/airport_row_component_constants');
-// var Store = require('../stores/airport_row_component_store');
-// var Actions = require('../actions/airport_row_component_actions');
 
 class AirportRowComponent extends React.Component{
     constructor(props) {
@@ -18,7 +15,6 @@ class AirportRowComponent extends React.Component{
     }
 };
 
-//Inline CSS Styles(excludes hover)
 var styles ={
     row:{
         border: '1px solid black'
