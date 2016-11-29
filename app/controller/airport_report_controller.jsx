@@ -1,4 +1,4 @@
-const Store = require('../stores/airport_hvac_store.js');
+const Store = require('../stores/airport_hvac_store.jsx');
 const actions = require('../actions/airport_hvac_actions.jsx');
 const AirportRows = require('./../components/airport_rows_component.jsx');
 const Moment = require('moment');

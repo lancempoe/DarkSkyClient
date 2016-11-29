@@ -1,4 +1,4 @@
-const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.js');
+const Dispatcher = require('../dispatchers/airport_hvac_dispatcher.jsx');
 const EventEmitter = require('events').EventEmitter;
 const Constants = require('../constants/airport_hvac_constants.jsx');
 const assign = require('object-assign');
