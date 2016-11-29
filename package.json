@@ -11,7 +11,8 @@
     "jsx-loader": "^0.13.2"
   },
   "dependencies": {
-    "future-router": "^1.0.2"
+    "future-router": "^1.0.2",
+    "moment": "^2.17.0"
   },
   "paths": {
     "app": {

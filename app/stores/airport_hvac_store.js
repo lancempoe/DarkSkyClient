@@ -30,42 +30,29 @@ AirportHvacStore.dispatchToken = Dispatcher.register(function(payload){
   console.log('im at the store switch and the type is '+ payload.type);
     switch(payload.type){
     case Constants.GET:
-      getData();
+      getData(payload.data);
       break;
-    // case Constants.SET:
-    //   setData();
-    //   break;      
   }
 
 });
 
 //Define Custom Actions
-function getData(){
+function getData(data){
 
-    console.log("calling api");
+    console.log("calling api with: " + data);
+    const startTime = data.startTime;
+    const endTime = data.endTime;
 
     var promise = $.ajax({
         method: "POST",
-        url: "http://localhost:8080/api/weather/airport?start_date=1480155289&end_date=1480241689",
+        url: `http://localhost:8080/api/weather/airport?start_date=${startTime}&end_date=${endTime}`,
         dataType: 'json'
     });
 
   promise.then( function(response){
-      console.log("Success: " + response);
-
       Data = response;
      AirportHvacStore.emitChange();
  });
 }
-
-// function setData(){
-//   var Data ="DATA";
-//   var promise = $.post("http://localhost:3000/documents",{data: document});
-
-//   promise.then( function(response){
-//      getData();
-//      AirportHvacStore.emitChange();
-//  });
-//}
 
 module.exports = AirportHvacStore;

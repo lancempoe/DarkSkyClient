@@ -4,21 +4,12 @@ const Constants = require('../constants/airport_hvac_constants.js');
 var AirportHvacActions = {
   //Action Definition
 
-  getUpdatedAirportDate: function(){
-      console.log("Action called with type of : " + Constants.GET);
-
+  getUpdatedAirportDate(startTime, endTime) {
       Dispatcher.handleViewAction({
-        type:Constants.GET
-      //Additional Arguments
+        type:Constants.GET,
+        data: {startTime, endTime}
     });
   },
-
-  // set: function(){
-  //   Dispatcher.handleViewAction({
-  //     type:Constants.SET
-  //     //Additional Arguments
-  //   });
-  // }
 };
 
 module.exports = AirportHvacActions;
