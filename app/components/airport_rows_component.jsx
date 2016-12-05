@@ -2,6 +2,7 @@
 
 import AirportRow from './airport_row_component.jsx'; // eslint-disable-line no-unused-vars
 import Moment from 'moment';
+import _ from 'lodash';
 
 class AirportResultsComponent extends React.Component{
     constructor(props) {
@@ -28,7 +29,7 @@ function getRows(rows) {
     const airportRows = [];
     rows.forEach(row => {
         airportRows.push(
-            <AirportRow
+            <AirportRow key={_.uniqueId('row_')}
                 day={Moment.unix(row.day).format("MM/DD/YYYY")}
                 coolingUsed={row.coolingUsed ? "Yes":"No"}
                 heatingUsed={row.heatingUsed ? "Yes":"No"}/>
