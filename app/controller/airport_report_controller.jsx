@@ -34,7 +34,7 @@ class AnalysisComponent extends React.Component{
 
     render(){
         return(
-            <div style={css(styles.center,styles.screen)}>
+            <div style={css(styles.center)}>
                 <Jumbotron style={styles.jumbo} >
                     <Row >
                         <h1 style={css(styles.header)} className="text-center">Port of Portland HVAC Analyzer</h1>
@@ -58,11 +58,6 @@ class AnalysisComponent extends React.Component{
 }
 
 const styles ={
-    screen: {
-        backgroundColor: '#1f352b',
-        color: 'white',
-        height: '100vh'
-    },
     header: {
         fontSize: '36px'
     },
