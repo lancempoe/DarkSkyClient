@@ -1,8 +1,7 @@
-/* global React, css */
-
 import AirportRow from './airport_row_component.jsx'; // eslint-disable-line no-unused-vars
 import Moment from 'moment';
 import _ from 'lodash';
+import React from 'react';
 
 class AirportResultsComponent extends React.Component{
     constructor(props) {
@@ -11,14 +10,16 @@ class AirportResultsComponent extends React.Component{
 
     render(){
         return(
-            <div style={css(styles.container)} >
-                <table align="center" style={css(styles.table)} >
-                    <tr>
-                        <td style={css(styles.header)} >Day         </td>
-                        <td style={css(styles.header)} >Cooling Used</td>
-                        <td style={css(styles.header)} >Heating Used</td>
-                    </tr>
-                    {getRows(this.props.rows)}
+            <div style={{...styles.container}} >
+                <table style={{...styles.table}} >
+                    <tbody>
+                        <tr>
+                            <td style={{...styles.header}} >Day         </td>
+                            <td style={{...styles.header}} >Cooling Used</td>
+                            <td style={{...styles.header}} >Heating Used</td>
+                        </tr>
+                        {getRows(this.props.rows)}
+                    </tbody>
                 </table>
             </div>
         );
@@ -60,8 +61,9 @@ const styles = {
         margin: '0 auto',
         backgroundColor: 'white',
         color: 'black',
-        paddingBottom:'30px'
+        paddingBottom:'30px',
+        align: 'center'
     }
 };
 
-module.exports = AirportResultsComponent;
+export default AirportResultsComponent;

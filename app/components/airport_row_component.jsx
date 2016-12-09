@@ -1,4 +1,4 @@
-/* global React, css */
+import React from 'react';
 
 class AirportRowComponent extends React.Component{
     constructor(props) {
@@ -7,7 +7,7 @@ class AirportRowComponent extends React.Component{
 
     render(){
         return (
-            <tr style={css(styles.row)}>
+            <tr style={{...styles.row}}>
                 <td>{this.props.day}</td>
                 <td>{this.props.coolingUsed}</td>
                 <td>{this.props.heatingUsed}</td>
@@ -32,4 +32,4 @@ AirportRowComponent.propTypes = {
     results: React.PropTypes.object
 };
 
-module.exports = AirportRowComponent;
+export default AirportRowComponent;

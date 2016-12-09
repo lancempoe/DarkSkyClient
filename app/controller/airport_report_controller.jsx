@@ -1,56 +1,52 @@
-/* global React, css */
-
-import Store from '../stores/airport_hvac_store.jsx';
+import React from 'react';
+import { connect } from 'react-redux';
+import Moment from 'moment';
 import Actions from '../actions/airport_hvac_actions.jsx';
+import {Jumbotron, Row, button} from 'react-bootstrap';  // eslint-disable-line no-unused-vars
 import AirportRows from './../components/airport_rows_component.jsx'; // eslint-disable-line no-unused-vars
+
+const startOfJune = Moment.utc(["2016", "06", "01"])/1000;
+const endOfJune = Moment.utc(["2016", "06", "30"])/1000;
+const startOfJuly = Moment.utc(["2016","07","01"])/1000;
+const endOfJuly = Moment.utc(["2016","07","31"])/1000;
 
 class AnalysisComponent extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {data: []};
-    }
-    componentWillMount() {
-        Store.addChangeListener(this.onChange.bind(this));
     }
 
-    onChange() {
-        this.setState({
-            data: Store.getData()
-        });
+    componentDidMount() {
+        Actions.getUpdatedAirportDate(startOfJune, endOfJune);
     }
 
     onJuneButtonClick() {
-        const startTime = 1464764400;
-        const endTime = 1467356399;
-        Actions.getUpdatedAirportDate(startTime, endTime);
+        Actions.getUpdatedAirportDate(startOfJune, endOfJune);
     }
 
     onJulyButtonClick() {
-        const startTime = 1467356400;
-        const endTime = 1470034799;
-        Actions.getUpdatedAirportDate(startTime, endTime);
+        Actions.getUpdatedAirportDate(startOfJuly, endOfJuly);
     }
 
     render(){
         return(
-            <div style={css(styles.center)}>
-                <Jumbotron style={styles.jumbo} >
+            <div style={{...styles.center}}>
+                <Jumbotron style={{...styles.jumbo}} >
                     <Row >
-                        <h1 style={css(styles.header)} className="text-center">Port of Portland HVAC Analyzer</h1>
+                        <h1 style={{...styles.header}} className="text-center">Port of Portland HVAC Analyzer</h1>
                     </Row>
                     <Row>
                         <button
-                            style={css(styles.button)}
+                            style={{...styles.button}}
                             onClick={this.onJuneButtonClick} className="text-center">Build June results</button>
                         <button
-                            style={css(styles.button)}
+                            style={{...styles.button}}
                             onClick={this.onJulyButtonClick} className="text-center">Build July results</button>
                     </Row>
                 </Jumbotron>
 
-                <Row style={css(styles.body)}>
-                    <AirportRows rows={this.state.data}/>
+                <Row style={{...styles.body}}>
+                    <AirportRows rows={this.props.data}/>
                 </Row>
             </div>
         );
@@ -63,6 +59,7 @@ const styles ={
     },
     jumbo:{
         color: '#1f352b',
+        backgroundColor: 'darkseagreen',
         position: 'fixed',
         zIndex: '10',
         width: '100%',
@@ -81,4 +78,10 @@ const styles ={
     }
 };
 
-module.exports = AnalysisComponent;
+const mapStateToProps = function(store) {
+    return {
+        data: store.hvacStore.data
+    };
+};
+
+export default connect(mapStateToProps)(AnalysisComponent);

@@ -47,5 +47,5 @@ fabric.properties
 
 .idea
 node_modules
-main.js
+public/js/main.js
 /npm-debug.log
